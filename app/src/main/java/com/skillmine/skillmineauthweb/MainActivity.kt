@@ -39,14 +39,13 @@ class MainActivity : AppCompatActivity() {
         }
         loginButton = findViewById<Button>(R.id.bt_login)
 
-        //Call  Library Call
+        //Call WebAuth Library
         loginButton.setOnClickListener {
             val intent = Intent(this@MainActivity, AuthenticationActivity::class.java)
             intent.putExtra("baseUrl",BASE_URL)
             intent.putExtra("clientId",CLIENT_ID)
             authActivityResultLauncher.launch(intent)
         }
-
     }
 
 }

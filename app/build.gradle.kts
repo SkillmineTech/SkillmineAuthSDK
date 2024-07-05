@@ -46,6 +46,6 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-   implementation( project(":WebAuthSDK"))
-  //  implementation ("com.github.Subratsss19:AuthWeb:1.0.3")
+ //  implementation( project(":WebAuthSDK"))
+   implementation ("com.github.Subratsss19:AuthWeb:1.0.4")
 }
