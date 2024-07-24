@@ -36,8 +36,9 @@ Here, we want to open the Authentication Activity from LoginActivity.
 
 ```gradle
 // Define the BASE_URL and CLIENT_ID
-const val BASE_URL = "https://nightly-accounts-api.complyment.com/authz-srv/authz"
+const val BASE_URL = "base_url"
 const val CLIENT_ID = "client_id"
+const val REDIRECT_URL = "redirect_url"
 ```
 Initialize the authActivityResultLauncher:
 
@@ -55,6 +56,7 @@ Open the Library’s Authentication Activity:
     val intent = Intent(this@LoginActivity, AuthenticationActivity::class.java).apply {
         putExtra("baseUrl", BASE_URL)
         putExtra("clientId", CLIENT_ID)
+        putExtra("redirectURL", REDIRECT_URL)
     }
     authActivityResultLauncher.launch(intent)
 }
