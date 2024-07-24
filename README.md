@@ -46,7 +46,7 @@ Initialize the authActivityResultLauncher:
     if (result.resultCode == Activity.RESULT_OK) {
         val data: Intent? = result.data
         // Handle the result here
-        val accessToken = data?.getStringExtra("accessToken")
+        val accessToken = data?.getStringExtra("access_token")
         // Use the access token as needed
     }
 }
