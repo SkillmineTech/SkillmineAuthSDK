@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The `SkillmineAuthSDK` Library enables seamless integration of authentication in Android applications. It facilitates handling OAuth2 flows, allowing developers to manage user authentication and token retrieval within their apps easily.
+The `SkillmineAuthSDK` Library enables seamless authentication integration in Android applications. It facilitates handling OAuth2 flows, allowing developers to easily manage user authentication and token retrieval within their apps.
 
 ## Prerequisites
 
@@ -18,7 +18,7 @@ Ensure you have the following before starting:
 # SkillmineAuth Library
 
 ## Installation
-To use the AuthWeb library, add it to your project dependencies.Open your build.gradle file (Module: app) and add the following:
+To use the AuthWeb library, add it to your project dependencies. Open your build.gradle file (Module: app) and add the following:
 
 Sync your project to download and include the dependency.
 
