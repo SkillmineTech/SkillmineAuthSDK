@@ -24,7 +24,7 @@ Sync your project to download and include the dependency.
 
 ```gradle
 auth_web_version = "1.0.4"
-implementation "com.github.SkillmineTech:SkillmineAuth:${auth_web_version}
+implementation "com.github.SkillmineTech:SkillmineAuthSDK:${auth_web_version}
 
 ```
 
