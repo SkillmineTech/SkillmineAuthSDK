@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The `skillmineAuth` Library enables seamless integration of authentication in Android applications. It facilitates handling OAuth2 flows, allowing developers to manage user authentication and token retrieval within their apps easily.
+The `SkillmineAuthSDK` Library enables seamless integration of authentication in Android applications. It facilitates handling OAuth2 flows, allowing developers to manage user authentication and token retrieval within their apps easily.
 
 ## Prerequisites
 
