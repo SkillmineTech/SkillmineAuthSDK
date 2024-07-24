@@ -37,7 +37,7 @@ Here, we want to open the Authentication Activity from LoginActivity.
 ```gradle
 // Define the BASE_URL and CLIENT_ID
 const val BASE_URL = "https://nightly-accounts-api.complyment.com/authz-srv/authz"
-const val CLIENT_ID = "236b91c8-b2f0-4891-a83c-f358a109a843"
+const val CLIENT_ID = "client_id"
 ```
 Initialize the authActivityResultLauncher:
 
