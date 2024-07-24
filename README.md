@@ -1,4 +1,4 @@
-# Integrating `SkillmineAuth` Library in Your Android App
+# Integrating `SkillmineAuthSDK` Library in Your Android App
 
 ## Introduction
 
