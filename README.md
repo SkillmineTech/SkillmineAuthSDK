@@ -54,8 +54,8 @@ Initialize the authActivityResultLauncher:
 Open the Library’s Authentication Activity:
 ```loginButton.setOnClickListener {
     val intent = Intent(this@LoginActivity, AuthenticationActivity::class.java).apply {
-        putExtra("baseUrl", BASE_URL)
-        putExtra("clientId", CLIENT_ID)
+        putExtra("baseURL", BASE_URL)
+        putExtra("clientID", CLIENT_ID)
         putExtra("redirectURL", REDIRECT_URL)
     }
     authActivityResultLauncher.launch(intent)
