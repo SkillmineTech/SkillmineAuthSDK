@@ -23,13 +23,13 @@ To use the AuthWeb library, add it to your project dependencies. Open your build
 Sync your project to download and include the dependency.
 
 ```gradle
-auth_web_version = "1.0.4"
+## auth_web_version = "1.0.5"
 implementation "com.github.SkillmineTech:SkillmineAuthSDK:${auth_web_version}
 
 ```
 
 ## Authentication Flow
-To initiate the authentication process, create an intent to open the Authentication Activity provided by the library. Use an ActivityResultLauncher to handle the result of the authentication process.
+To initiate the authentication process, you can create an intent to open the Authentication Activity provided by the library. Use an ActivityResultLauncher to handle the result of the authentication process.
 
 Define authActivityResultLauncher in the Activity
 Here, we want to open the Authentication Activity from LoginActivity.
