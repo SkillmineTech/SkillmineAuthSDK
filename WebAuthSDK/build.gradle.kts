@@ -54,4 +54,5 @@ dependencies {
     implementation(libs.androidx.webkit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
 }

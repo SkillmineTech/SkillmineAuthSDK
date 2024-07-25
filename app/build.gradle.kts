@@ -42,9 +42,11 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(project(":WebAuthSDK"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-     implementation( project(":WebAuthSDK"))
+    implementation( project(":WebAuthSDK"))
+//  implementation("com.github.SkillmineTech:SkillmineAuthSDK:1.0.4")
 }

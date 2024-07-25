@@ -11,6 +11,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.skillmine.skillmineauthweb.AuthenticationConstants.BASE_URL
 import com.skillmine.skillmineauthweb.AuthenticationConstants.CLIENT_ID
+import com.skillmine.skillmineauthweb.AuthenticationConstants.REDIRECT_URL
 import com.skillmine.webauthsdk.AuthenticationActivity
 
 class MainActivity : AppCompatActivity() {
@@ -42,8 +43,9 @@ class MainActivity : AppCompatActivity() {
         //Call WebAuth Library
         loginButton.setOnClickListener {
             val intent = Intent(this@MainActivity, AuthenticationActivity::class.java)
-            intent.putExtra("baseUrl",BASE_URL)
-            intent.putExtra("clientId",CLIENT_ID)
+            intent.putExtra("baseURL",BASE_URL)
+            intent.putExtra("clientID",CLIENT_ID)
+            intent.putExtra("redirectURL",REDIRECT_URL)
             authActivityResultLauncher.launch(intent)
         }
     }
