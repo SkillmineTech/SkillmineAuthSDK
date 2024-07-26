@@ -23,7 +23,7 @@ To use the AuthWeb library, add it to your project dependencies. Open your build
 Sync your project to download and include the dependency.
 
 ```gradle
-## auth_web_version = "1.0.5"
+## auth_web_version = "1.0.6"
 implementation "com.github.SkillmineTech:SkillmineAuthSDK:${auth_web_version}
 
 ```
