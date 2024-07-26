@@ -16,6 +16,7 @@ import com.skillmine.webauthsdk.AuthenticationActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var loginButton: Button
+
     //Get the result from AuthenticationActivity
     private val authActivityResultLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -23,7 +24,7 @@ class MainActivity : AppCompatActivity() {
                 val accessToken = result.data?.getStringExtra("access_token")
                 accessToken?.let {
                     //Open Dashboard Activity
-                   startActivity(Intent(this@MainActivity, DashBoardActivity::class.java))
+                    startActivity(Intent(this@MainActivity, DashBoardActivity::class.java))
                     Log.v("ACCESS_TOKEN", accessToken)
                 }
             }
@@ -42,11 +43,11 @@ class MainActivity : AppCompatActivity() {
 
         //Call WebAuth Library
         loginButton.setOnClickListener {
-            val intent = Intent(this@MainActivity, AuthenticationActivity::class.java)
-            intent.putExtra("baseURL",BASE_URL)
-            intent.putExtra("clientID",CLIENT_ID)
-            intent.putExtra("redirectURL",REDIRECT_URL)
+
+            val intent =
+                AuthenticationActivity.createIntent(this, BASE_URL, CLIENT_ID, REDIRECT_URL)
             authActivityResultLauncher.launch(intent)
+
         }
     }
 

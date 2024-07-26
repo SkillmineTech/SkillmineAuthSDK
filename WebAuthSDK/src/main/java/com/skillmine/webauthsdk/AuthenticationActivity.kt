@@ -1,25 +1,25 @@
 package com.skillmine.webauthsdk
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
 import android.net.http.SslError
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.webkit.SslErrorHandler
 import android.webkit.WebResourceError
 import android.webkit.WebResourceRequest
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+
 
 class AuthenticationActivity : AppCompatActivity() {
     private lateinit var accessToken: String
@@ -39,16 +39,19 @@ class AuthenticationActivity : AppCompatActivity() {
 
         val webView: WebView = findViewById(R.id.webview_layout)
 
-        baseUrl = intent.getStringExtra("baseURL").toString()
-        clientId = intent.getStringExtra("clientID").toString()
-        redirectUrl = intent.getStringExtra("redirectURL").toString()
+        baseUrl = intent.getStringExtra(EXTRA_BASE_URL) ?: ""
+        clientId = intent.getStringExtra(EXTRA_CLIENT_ID) ?: ""
+        redirectUrl = intent.getStringExtra(EXTRA_REDIRECT_URL) ?: ""
 
+        setupWebView(webView, clientId, redirectUrl, baseUrl)
+    }
+
+    private fun setupWebView(webView: WebView, clientId: String, redirectUrl: String, baseUrl: String) {
         webView.clearCache(true)
         webView.clearHistory()
-
         webView.setInitialScale(0)
         webView.isVerticalScrollBarEnabled = false
-        webView.setLayerType(View.LAYER_TYPE_HARDWARE, null)
+        webView.setLayerType(WebView.LAYER_TYPE_HARDWARE, null)
         webView.isScrollbarFadingEnabled = true
         WebView.setWebContentsDebuggingEnabled(true)
 
@@ -89,7 +92,7 @@ class AuthenticationActivity : AppCompatActivity() {
 
                     val resultIntent = Intent()
                     resultIntent.putExtra("access_token", accessToken)
-                    setResult(RESULT_OK,resultIntent)
+                    setResult(RESULT_OK, resultIntent)
                     finish()
                     return true
                 }
@@ -98,7 +101,6 @@ class AuthenticationActivity : AppCompatActivity() {
 
             override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
                 super.onPageStarted(view, url, favicon)
-                //   progressBar.visibility = View.VISIBLE
             }
 
             override fun onPageFinished(view: WebView?, url: String?) {
@@ -136,6 +138,20 @@ class AuthenticationActivity : AppCompatActivity() {
         webSettings.domStorageEnabled = true
         webView.settings.mixedContentMode = WebSettings.MIXED_CONTENT_COMPATIBILITY_MODE
         webSettings.cacheMode = WebSettings.LOAD_DEFAULT // Use default cache settings
+    }
+
+    companion object {
+        private const val EXTRA_BASE_URL = "baseURL"
+        private const val EXTRA_CLIENT_ID = "clientID"
+        private const val EXTRA_REDIRECT_URL = "redirectURL"
+
+        fun createIntent(context: Context, baseUrl: String, clientId: String, redirectUrl: String): Intent {
+            return Intent(context, AuthenticationActivity::class.java).apply {
+                putExtra(EXTRA_BASE_URL, baseUrl)
+                putExtra(EXTRA_CLIENT_ID, clientId)
+                putExtra(EXTRA_REDIRECT_URL, redirectUrl)
+            }
+        }
     }
 }
 
