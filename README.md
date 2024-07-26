@@ -29,7 +29,7 @@ implementation "com.github.SkillmineTech:SkillmineAuthSDK:${auth_web_version}
 ```
 
 ## Authentication Flow
-To initiate the authentication process, you can create an intent to open the Authentication Activity provided by the library. Use an ActivityResultLauncher to handle the result of the authentication process.
+To initiate the authentication process, you can create an intent to open the Authentication Activity provided by the library. You can use an ActivityResultLauncher to handle the authentication process results.
 
 Define authActivityResultLauncher in the Activity
 Here, we want to open the Authentication Activity from LoginActivity.
@@ -53,12 +53,9 @@ Initialize the authActivityResultLauncher:
 ```
 Open the Library’s Authentication Activity:
 ```loginButton.setOnClickListener {
-    val intent = Intent(this@LoginActivity, AuthenticationActivity::class.java).apply {
-        putExtra("baseURL", BASE_URL)
-        putExtra("clientID", CLIENT_ID)
-        putExtra("redirectURL", REDIRECT_URL)
-    }
-    authActivityResultLauncher.launch(intent)
+    val intent =
+                AuthenticationActivity.createIntent(this, BASE_URL, CLIENT_ID, REDIRECT_URL)
+            authActivityResultLauncher.launch(intent)
 }
 ```
 ## Conclusion
