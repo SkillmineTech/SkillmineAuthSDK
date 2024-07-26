@@ -51,7 +51,7 @@ Initialize the authActivityResultLauncher:
     }
 }
 ```
-Open the Library’s Authentication Activity:
+Call the createIntent function of Library’s Authentication Activity:
 ```loginButton.setOnClickListener {
     val intent =
                 AuthenticationActivity.createIntent(this, BASE_URL, CLIENT_ID, REDIRECT_URL)
