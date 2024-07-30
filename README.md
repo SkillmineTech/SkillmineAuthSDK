@@ -18,15 +18,29 @@ Ensure you have the following before starting:
 # SkillmineAuth Library
 
 ## Installation
-To use the AuthWeb library, add it to your project dependencies. Open your build.gradle file (Module: app) and add the following:
 
-Sync your project to download and include the dependency.
+Add it to your root settings.gradle.kts :
+
+```gradle
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven {url = uri("https://jitpack.io")}
+    }
+}
+
+```
+
+To use the AuthWeb library, add it to your project dependencies. Open your build.gradle file (Module: app) and add the following:
 
 ```gradle
 ## auth_web_version = "1.0.6"
 implementation "com.github.SkillmineTech:SkillmineAuthSDK:${auth_web_version}
 
 ```
+Sync your project to download and include the dependency.
 
 ## Authentication Flow
 To initiate the authentication process, you can create an intent to open the Authentication Activity provided by the library. You can use an ActivityResultLauncher to handle the authentication process results.
