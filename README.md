@@ -51,7 +51,8 @@ const val CLIENT_ID = "client_id"
 const val REDIRECT_URL = "redirect_url"
 ```
 Call the createIntent function of the Library’s Authentication Activity:
-```loginButton.setOnClickListener {
+```
+loginButton.setOnClickListener {
     val intent =
                 AuthenticationActivity.createIntent(this, BASE_URL, CLIENT_ID, REDIRECT_URL)
             authActivityResultLauncher.launch(intent)
