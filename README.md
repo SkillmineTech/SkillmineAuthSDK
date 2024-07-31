@@ -33,7 +33,7 @@ dependencyResolutionManagement {
 
 ```
 
-To use the AuthWeb library, add it to your project dependencies. Open your build.gradle file (Module: app) and add the following:
+To use the SkillmineAuthSDK library, add it to your project dependencies. Open your build.gradle file (Module: app) and add the following:
 
 ```gradle
 ## auth_web_version = "1.0.6"
