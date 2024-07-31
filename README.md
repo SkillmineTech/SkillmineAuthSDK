@@ -63,7 +63,8 @@ Define authActivityResultLauncher in the Activity
 Here, we want to open the Authentication Activity from LoginActivity.
 Initialize the authActivityResultLauncher:
 
-```val authActivityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+```
+val authActivityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
     if (result.resultCode == Activity.RESULT_OK) {
         val data: Intent? = result.data
         // Handle the result here
