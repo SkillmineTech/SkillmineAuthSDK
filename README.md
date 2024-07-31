@@ -43,10 +43,6 @@ implementation "com.github.SkillmineTech:SkillmineAuthSDK:${auth_web_version}
 Sync your project to download and include the dependency.
 
 ## Authentication Flow
-To initiate the authentication process, you can create an intent to open the Authentication Activity provided by the library. You can use an ActivityResultLauncher to handle the authentication process results.
-
-Define authActivityResultLauncher in the Activity
-Here, we want to open the Authentication Activity from LoginActivity.
 
 ```gradle
 // Define the BASE_URL and CLIENT_ID
@@ -61,7 +57,10 @@ Call the createIntent function of the Library’s Authentication Activity:
             authActivityResultLauncher.launch(intent)
 }
 ```
+To initiate the authentication process, you can create an intent to open the Authentication Activity provided by the library. You can use an ActivityResultLauncher to handle the authentication process results.
 
+Define authActivityResultLauncher in the Activity
+Here, we want to open the Authentication Activity from LoginActivity.
 Initialize the authActivityResultLauncher:
 
 ```val authActivityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
