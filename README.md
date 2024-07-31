@@ -77,3 +77,5 @@ val authActivityResultLauncher = registerForActivityResult(ActivityResultContrac
 
 ## Conclusion
 This guide has covered the basic steps to integrate and use the SkillmineAuthsdk Library in your Android app. If you would like more advanced configurations and troubleshooting, you can contact Skillmine Technologies.
+If you encounter any issues or have questions, please contact our support team. 
+Happy coding! 
