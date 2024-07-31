@@ -54,6 +54,14 @@ const val BASE_URL = "base_url"
 const val CLIENT_ID = "client_id"
 const val REDIRECT_URL = "redirect_url"
 ```
+Call the createIntent function of the Library’s Authentication Activity:
+```loginButton.setOnClickListener {
+    val intent =
+                AuthenticationActivity.createIntent(this, BASE_URL, CLIENT_ID, REDIRECT_URL)
+            authActivityResultLauncher.launch(intent)
+}
+```
+
 Initialize the authActivityResultLauncher:
 
 ```val authActivityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -65,12 +73,6 @@ Initialize the authActivityResultLauncher:
     }
 }
 ```
-Call the createIntent function of Library’s Authentication Activity:
-```loginButton.setOnClickListener {
-    val intent =
-                AuthenticationActivity.createIntent(this, BASE_URL, CLIENT_ID, REDIRECT_URL)
-            authActivityResultLauncher.launch(intent)
-}
-```
+
 ## Conclusion
 This guide has covered the basic steps to integrate and use the auth_webview_sdk Package in your Flutter app. For more advanced configurations and troubleshooting, contact Skillmine Technologies.
