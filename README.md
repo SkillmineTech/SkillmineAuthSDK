@@ -50,7 +50,7 @@ const val BASE_URL = "base_url"
 const val CLIENT_ID = "client_id"
 const val REDIRECT_URL = "redirect_url"
 ```
-Call the createIntent function of the Library’s Authentication Activity:
+To initiate the authentication process, you can create an intent to open the Authentication Activity provided by the library. 
 ```
 loginButton.setOnClickListener {
     val intent =
@@ -58,7 +58,7 @@ loginButton.setOnClickListener {
             authActivityResultLauncher.launch(intent)
 }
 ```
-To initiate the authentication process, you can create an intent to open the Authentication Activity provided by the library. You can use an ActivityResultLauncher to handle the authentication process results.
+You can use an ActivityResultLauncher to handle the authentication process results.
 
 Define authActivityResultLauncher in the Activity
 Here, we want to open the Authentication Activity from LoginActivity.
