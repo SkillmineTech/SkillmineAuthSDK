@@ -55,7 +55,6 @@ class AuthenticationActivity : AppCompatActivity() {
         webView.setLayerType(WebView.LAYER_TYPE_HARDWARE, null)
         webView.isScrollbarFadingEnabled = true
 
-
         // Build the query string
         val queryParams = buildString {
             append("client_id=").append(clientId)
@@ -136,7 +135,7 @@ class AuthenticationActivity : AppCompatActivity() {
         }
 
         val webSettings: WebSettings = webView.settings
-      //  webSettings.javaScriptEnabled = true
+        webSettings.javaScriptEnabled = true
         webSettings.javaScriptCanOpenWindowsAutomatically = true
         webSettings.layoutAlgorithm = WebSettings.LayoutAlgorithm.NORMAL
         webSettings.cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
