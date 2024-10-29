@@ -43,12 +43,12 @@ class MainActivity : AppCompatActivity() {
 
         //Call WebAuth Library
         loginButton.setOnClickListener {
-
             val intent =
                 AuthenticationActivity.createIntent(this, BASE_URL, CLIENT_ID, REDIRECT_URL)
             authActivityResultLauncher.launch(intent)
 
         }
     }
-
 }
+
+

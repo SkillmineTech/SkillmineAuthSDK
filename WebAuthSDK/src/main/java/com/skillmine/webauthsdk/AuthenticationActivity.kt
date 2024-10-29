@@ -53,7 +53,9 @@ class AuthenticationActivity : AppCompatActivity() {
         webView.isVerticalScrollBarEnabled = false
         webView.setLayerType(WebView.LAYER_TYPE_HARDWARE, null)
         webView.isScrollbarFadingEnabled = true
-        WebView.setWebContentsDebuggingEnabled(true)
+        webView.setWebContentsDebuggingEnabled(true)
+        webView.setSafeBrowsingEnabled = true
+
 
         // Build the query string
         val queryParams = buildString {
@@ -113,7 +115,15 @@ class AuthenticationActivity : AppCompatActivity() {
                 handler: SslErrorHandler?,
                 error: SslError?
             ) {
-                handler?.proceed() // Ignore SSL certificate errors
+              //  handler?.proceed() // Ignore SSL certificate errors
+                // Display a dialog to notify the user of an SSL error (optional)
+                AlertDialog.Builder(view?.context).apply {
+                    setTitle("SSL Certificate Error")
+                    setMessage("The SSL certificate is invalid or untrusted. For security, the connection has been blocked.")
+                    setPositiveButton("OK") { _, _ -> handler?.cancel() }
+                    setCancelable(false)
+                    show()
+                }
             }
 
             override fun onReceivedError(
@@ -136,8 +146,11 @@ class AuthenticationActivity : AppCompatActivity() {
         webSettings.setSupportZoom(true)
         webSettings.builtInZoomControls = false
         webSettings.domStorageEnabled = true
-        webView.settings.mixedContentMode = WebSettings.MIXED_CONTENT_COMPATIBILITY_MODE
+        webSettings.mixedContentMode = WebSettings.MIXED_CONTENT_COMPATIBILITY_MODE
         webSettings.cacheMode = WebSettings.LOAD_DEFAULT // Use default cache settings
+        webSettings.allowFileAccess = false
+        webSettings.allowFileAccessFromFileURLs = false
+        webSettings.allowContentAccess = false
     }
 
     companion object {
