@@ -1,6 +1,7 @@
 package com.skillmine.webauthsdk
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
@@ -53,8 +54,6 @@ class AuthenticationActivity : AppCompatActivity() {
         webView.isVerticalScrollBarEnabled = false
         webView.setLayerType(WebView.LAYER_TYPE_HARDWARE, null)
         webView.isScrollbarFadingEnabled = true
-        webView.setWebContentsDebuggingEnabled(true)
-        webView.setSafeBrowsingEnabled = true
 
 
         // Build the query string
@@ -137,7 +136,7 @@ class AuthenticationActivity : AppCompatActivity() {
         }
 
         val webSettings: WebSettings = webView.settings
-        webSettings.javaScriptEnabled = true
+      //  webSettings.javaScriptEnabled = true
         webSettings.javaScriptCanOpenWindowsAutomatically = true
         webSettings.layoutAlgorithm = WebSettings.LayoutAlgorithm.NORMAL
         webSettings.cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK

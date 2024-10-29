@@ -22,4 +22,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "SkillMineAuthWeb"
 include(":app")
-//include(":WebAuthSDK")
+include(":WebAuthSDK")
