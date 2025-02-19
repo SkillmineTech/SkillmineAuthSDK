@@ -47,5 +47,5 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
   implementation( project(":WebAuthSDK"))
- // implementation("com.github.SkillmineTech:SkillmineAuthSDK:1.0.8")
+  //implementation("com.github.SkillmineTech:SkillmineAuthSDK:1.0.9")
 }

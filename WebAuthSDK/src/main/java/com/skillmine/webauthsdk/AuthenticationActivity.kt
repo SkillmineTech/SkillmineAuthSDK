@@ -7,6 +7,7 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
 import android.net.http.SslError
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.webkit.SslErrorHandler
@@ -17,6 +18,7 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -28,6 +30,7 @@ class AuthenticationActivity : AppCompatActivity() {
     private lateinit var clientId: String
     private lateinit var redirectUrl: String
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -47,7 +50,15 @@ class AuthenticationActivity : AppCompatActivity() {
         setupWebView(webView, clientId, redirectUrl, baseUrl)
     }
 
-    private fun setupWebView(webView: WebView, clientId: String, redirectUrl: String, baseUrl: String) {
+    //  @SuppressLint("SetJavaScriptEnabled")
+    @SuppressLint("SetJavaScriptEnabled")
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun setupWebView(
+        webView: WebView,
+        clientId: String,
+        redirectUrl: String,
+        baseUrl: String
+    ) {
         webView.clearCache(true)
         webView.clearHistory()
         webView.setInitialScale(0)
@@ -113,7 +124,6 @@ class AuthenticationActivity : AppCompatActivity() {
                 handler: SslErrorHandler?,
                 error: SslError?
             ) {
-              //  handler?.proceed() // Ignore SSL certificate errors
                 // Display a dialog to notify the user of an SSL error (optional)
                 AlertDialog.Builder(view?.context).apply {
                     setTitle("SSL Certificate Error")
@@ -136,6 +146,10 @@ class AuthenticationActivity : AppCompatActivity() {
 
         val webSettings: WebSettings = webView.settings
         webSettings.javaScriptEnabled = true
+        // Enable Safe Browsing (Android 8.0+)
+        webSettings.safeBrowsingEnabled = true
+
+        webSettings.safeBrowsingEnabled = true
         webSettings.javaScriptCanOpenWindowsAutomatically = true
         webSettings.layoutAlgorithm = WebSettings.LayoutAlgorithm.NORMAL
         webSettings.cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
@@ -144,11 +158,10 @@ class AuthenticationActivity : AppCompatActivity() {
         webSettings.setSupportZoom(true)
         webSettings.builtInZoomControls = false
         webSettings.domStorageEnabled = true
-        webSettings.mixedContentMode = WebSettings.MIXED_CONTENT_COMPATIBILITY_MODE
         webSettings.cacheMode = WebSettings.LOAD_DEFAULT // Use default cache settings
         webSettings.allowFileAccess = false
-        webSettings.allowFileAccessFromFileURLs = false
         webSettings.allowContentAccess = false
+        webSettings.mixedContentMode = WebSettings.MIXED_CONTENT_NEVER_ALLOW
     }
 
     companion object {
@@ -156,7 +169,12 @@ class AuthenticationActivity : AppCompatActivity() {
         private const val EXTRA_CLIENT_ID = "clientID"
         private const val EXTRA_REDIRECT_URL = "redirectURL"
 
-        fun createIntent(context: Context, baseUrl: String, clientId: String, redirectUrl: String): Intent {
+        fun createIntent(
+            context: Context,
+            baseUrl: String,
+            clientId: String,
+            redirectUrl: String
+        ): Intent {
             return Intent(context, AuthenticationActivity::class.java).apply {
                 putExtra(EXTRA_BASE_URL, baseUrl)
                 putExtra(EXTRA_CLIENT_ID, clientId)
