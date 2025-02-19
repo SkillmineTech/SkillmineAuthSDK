@@ -36,7 +36,7 @@ dependencyResolutionManagement {
 To use the SkillmineAuthSDK library, add it to your project dependencies. Open your build.gradle file (Module: app) and add the following:
 
 ```gradle
-## auth_web_version = "1.0.6"
+## auth_web_version = "1.0.9"
 implementation "com.github.SkillmineTech:SkillmineAuthSDK:${auth_web_version}
 
 ```
